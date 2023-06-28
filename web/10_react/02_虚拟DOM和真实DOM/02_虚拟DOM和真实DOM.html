@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+
+    </div>
+    <div id="test2"></div>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+
+    <script type="text/babel">
+        let TDOM = document.getElementById('test2')
+        let VDOM = (
+            <h1>
+                <span>
+                    hello react
+                </span>
+            </h1>
+        )
+        ReactDOM.render(VDOM, document.getElementById('test'))
+
+        console.log('VDOM', VDOM);
+        console.log('TDOM', TDOM);
+        debugger // debugger打断点
+
+        /*
+        虚拟DOM和真实DOM
+        1、虚拟DOM是obj对象类型数据，真实DOM是html标签类型
+        2、虚拟DOM只有React使用，里面配置的属性很少，而真实DOM包含了html、CSS、JS的操作，所以属性很多
+        */
+    </script>
+
+</body>
+
+</html>

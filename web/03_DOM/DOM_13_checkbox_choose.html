@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="tabhead"></td>
+                <td>name</td>
+                <td>price</td>
+            </tr>
+        </thead>
+        <tbody id="tabbody">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iphone 13</td>
+                <td>5499</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iphone 12</td>
+                <td>4899</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iphone 11</td>
+                <td>3899</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // var tabhead = document.getElementById('tabhead');
+        // var tabbody = document.getElementById('tabbody').getElementsByTagName('input');
+
+        var tabhead = document.querySelector('thead input');
+        var tabbody = document.querySelectorAll('tbody input');
+
+
+        //if want to add elements in  document.querySelector use '( 'XX  xx') means that 'xx' table in 'XX' table 
+        // if need to use more , use '('XX,  XX')'  they are in same lay
+
+        tabhead.onclick = function () {
+            for (var i = 0; i < tabbody.length; i++) {
+                tabbody[i].checked = this.checked;
+            }
+        }
+
+
+        for (var i = 0; i < tabbody.length; i++) {  //先循环遍历每个单选元素
+            // first circle  is just  "onclick"
+            tabbody[i].onclick = function () {    //为每个元素添加点击事件
+                // second circle is for  judging all the checkboxs click or not
+                var flag = true;
+                for (var i = 0; i < tabbody.length; i++) {
+                    if (!tabbody[i].checked) {
+                        flag = false;
+                    }
+                    tabhead.checked = flag;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

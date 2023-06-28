@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- // data 中的是数据
+        // methods 中的是方法
+        // computed 中的计算属性 -->
+
+<body>
+    <div class="div">
+        familyName:<input type="text" v-model="familyName"> <br><br>
+
+        firstName:<input type="text" v-model="firstName"> <br><br>
+        fullName:<span>{{fullName}}</span>
+        <!-- computed调用时是调用fullname函数 不是里面的值 -->
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '.div',
+            data: {
+                familyName: 'zhang',
+                firstName: 'san'
+            },
+            computed: {
+                fullName() {
+                    return this.familyName + '-' + this.firstName
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

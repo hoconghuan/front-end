@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+
+        .change {
+            width: 200px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- somtimes  XX.onclick has lots of styles, it's hard to call them all,so className can do it -->
+    <!-- className use:   XX.className = "XX" , .XX{ } defined in CSS -->
+    <div>hello</div>
+
+    <script>
+        var test = document.querySelector('div')
+        test.onclick = function () {
+            this.className = 'change'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        clearfix::before,clearfix::after{
+            display:table;
+            content:"";
+        }
+        clearfix::after{
+            clear: both;
+        }
+        clearfix{
+            *zoom: 1;
+        }
+        div{
+            margin: 250px;
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var posit = document.querySelector('div');
+        posit.addEventListener('mousemove',function(e){
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            this.innerHTML = 'x position is ' + x + ' y position is ' + y ;
+        })
+           
+        
+        
+    </script>
+</body>
+</html>

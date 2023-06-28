@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            display: inline-block;
+        }
+        p {
+            display: inline-block;
+            color: rgb(26, 108, 223);
+        }
+        .wrong {
+            color:red;
+        }
+        .right {
+            color: rgb(41, 218, 44);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="password">
+        <p>please enter your password</p>
+    </div>
+    <script>
+        var ipt = document.querySelector('input');
+        var pra = document.querySelector('p');
+        ipt.onblur = function() {
+            if (ipt.value.length < 6 || ipt.value.length >16) {
+                pra.innerHTML = 'your input is wrong'
+                pra.className = 'wrong'
+            } else{
+                pra.innerHTML = 'your input is correct'
+                pra.className = 'right'
+            }
+        }
+    </script>
+</body>
+</html>

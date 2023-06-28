@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <school></school>
+        <!-- 用组件名称调用组件 -->
+        <student></student>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        // 创建组件
+        const school = Vue.extend({  //school 表示位置
+            //还可以简写成 const school = { 把组件复制进来} 
+            template: `<div>
+                {{schoolName}}
+                {{address}}
+                </div>`,
+            data() {
+                return {
+                    schoolName: '东京大学',
+                    address: '东京都'
+                }
+            }
+        })
+        const student = Vue.extend({
+            template: `<div>
+                {{studentName}}
+                {{age}}
+                </div>`,
+            data() {
+                return {
+                    studentName: '佐藤',
+                    age: '29'
+                }
+            }
+        })
+
+        new Vue({
+            el: '.div',
+            data: {
+
+            },
+            // 注册组件
+            components: {
+                school, //这是 school（组件的名字）： school（组件在什么位置）  的简写 （同名可以简写）
+                student
+            }
+        })
+    </script>
+</body>
+
+</html>

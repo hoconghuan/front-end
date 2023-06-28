@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <script src="./animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .box {
+            margin: 0 auto;
+            height: 337.5px;
+            width: 600px;
+            background-color: red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500%;
+        }
+
+        .pic {
+            float: left;
+        }
+
+        img {
+            /* display: none; */
+
+            float: left;
+            width: 600px;
+
+        }
+
+        .arrowLeft,
+        .arrowRight {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: 'icomoon';
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        .arrowRight {
+            right: 0;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -30px;
+        }
+
+        .circle li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            /* background-color: #fff; */
+            border: 2px solid rgba(44, 24, 177, 0.5);
+
+            margin: 0 3px;
+            border-radius: 50%;
+            z-index: 2;
+            /*鼠标经过显示小手*/
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: rgb(19, 207, 79);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>
+            <a href="javascript:;" class="arrowLeft">&lt</a>
+            <a href="javascript:;" class="arrowRight">&gt</a>
+        </div>
+        <ul class="pic">
+
+            <li><img src="../pic/1.jpeg" alt=""></li>
+            <li><img src="../pic/2.jpeg" alt=""></li>
+            <li><img src="../pic/3.jpeg" alt=""></li>
+
+        </ul>
+        <ol class="circle">
+
+        </ol>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var arrowLeft = document.querySelector('.arrowLeft');
+        var arrowRight = document.querySelector('.arrowRight');
+
+        box.onmouseenter = function (e) {
+            arrowLeft.style.display = 'block';
+            arrowRight.style.display = 'block';
+            clearInterval(timer);
+        }
+        box.onmouseleave = function (e) {
+            arrowLeft.style.display = 'none';
+            arrowRight.style.display = 'none';
+            timer;
+        }
+        //动态获取小圆圈的个数，   因为小圆圈绑定图片个数，所以让图片数和小圆圈相等就行
+
+        //ul和li是'box'的子类，在这里我没有写整个网页的布局，所以只有一个ul，正常情况下是
+        // box.querySlector, 而不是document.querySelector 
+
+        var ul = document.querySelector('ul');
+        var ol = document.querySelector('ol');
+        var boxWidth = box.offsetWidth;
+
+        for (var i = 0; i < ul.children.length; i++) {
+
+            // 循环遍历完li之后开始创建li并把li送到ol中
+            var li = document.createElement('li');//因为ol中是没有元素的， 所以现在整个DOM中创建li 然后在添加到 ol中。
+
+            // 创建索引
+            li.setAttribute('index', i);
+
+            ol.appendChild(li);
+
+
+
+            // 在生成小圆圈li的时候绑定点击事件
+            li.addEventListener('click', function (e) {
+                for (i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                // 在这里是给每个新建的li添加点击事件li.addEventListener('click', function(e){， 前缀是'li'，并不是在DOM里面的 li[i]！！！所以后面的写法是不对的
+                this.className = 'current';
+
+                // 点击小li后拿到index
+                var index = this.getAttribute('index');
+
+                num = index;
+                circle = index;
+
+                animate(ul, -index * boxWidth);
+
+            })
+        }
+
+        // 默认ol中第一个小li是选定的
+        ol.children[0].className = 'current';
+
+        // 克隆第一张图并加到轮播图后面
+        var first = ul.children[0].cloneNode(true);
+        ul.appendChild(first);
+
+        // 给作业箭头添加点击事件
+        var num = 0;
+        // 给小圆圈加控制条件
+        var circle = 0;
+
+        // 声明flag 节流阀
+        var flag = true;
+
+        arrowRight.addEventListener('click', function (e) {
+            //  在轮播图中，图片始终会完，所以我们需要在最后一张后面加第一张图片，然后快速复原将left改为0
+
+            // 节流阀是防止连续点击图片转场过快设计的
+            if (flag) {
+                flag = false;
+                if (num == ul.children.length - 1) {
+                    ul.style.left = 0;
+                    num = 0;
+                }
+                num++;
+                animate(ul, -num * boxWidth, function () {
+                    flag = true
+                });
+                circle++;
+                if (circle == ol.children.length) {
+                    circle = 0;
+                }
+                circleJudge();
+            }
+        })
+
+
+        arrowLeft.addEventListener('click', function (e) {
+
+            if (flag) {
+                flag = false;
+                if (num == 0) {
+                    num = ul.children.length - 1;
+                    ul.style.left = -num * boxWidth + 'px';
+
+                }
+                num--;
+                animate(ul, -num * boxWidth, function () {
+                    flag = true;
+                });
+                circle--;
+                if (circle < 0) {
+                    circle = ol.children.length - 1;
+                }
+                circleJudge();
+            }
+        })
+
+        function circleJudge() {
+            for (i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            ol.children[circle].className = 'current';
+        }
+
+        //   定时器自动轮播
+        var timer = setInterval(function () {
+            arrowRight.click();
+        }, 2000)
+    </script>
+</body>
+
+</html>

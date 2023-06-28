@@ -1,0 +1,34 @@
+<title>key的原理</title>
+<script type="text/javascript" src="../js/vue.js"></script>
+
+<div id="root">
+    <h2>人员列表（遍历数组）</h2>
+    <button @click.once="add">添加一个老刘</button>
+    <ul>
+        <li v-for="(p,index) of persons" :key="p.id">
+            <!-- 'key'是 虚拟DOM的对象标识，数据发生变化时，VUE会根据新数据生成的虚拟DOM与原来的虚拟DOM进行对比。 如果数据相同则复用旧虚拟DOM中的数据（不用再渲染新数据，提高运行效率），否则直接渲染新数据。 -->
+            {{p.name}}-{{p.age}}
+            <input type="text">
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            persons: [
+                { id: '001', name: '张三', age: 18 },
+                { id: '002', name: '李四', age: 19 },
+                { id: '003', name: '王五', age: 20 }
+            ]
+        },
+        methods: {
+            add() {
+                const p = { id: '004', name: '老刘', age: 40 }
+                this.persons.unshift(p)
+            }
+        },
+    })
+</script>

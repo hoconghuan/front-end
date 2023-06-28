@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <p></p>
+
+    <script>
+
+        let inp = document.querySelector('input');
+        let p = document.querySelector('p')
+
+
+        inp.onkeyup = throttle(
+
+            () => {
+                p.innerText = inp.value
+            }, 1000)
+        let flag = true;
+        function throttle(fn, delay) {  //fn是需要执行的函数
+
+            return () => {
+                if (!flag) {
+                    return;
+                }
+                flag = false;
+
+                setTimeout(() => {
+                    fn()
+                    flag = true;
+                }, delay);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

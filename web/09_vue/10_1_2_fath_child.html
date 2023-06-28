@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        // 创建子类 student
+        const student = {
+            template: `
+            <div>
+                {{studentName}},
+                {{age}}
+                </div>`,
+            data() {
+                return {
+                    studentName: 'andy',
+                    age: '18'
+                }
+            }
+        }
+
+        // 创建父类 school
+        const school = {
+            template: `
+            <div>   
+                {{schoolName}} </br>
+                {{address}}
+                
+                <student></student>  
+               
+                </div>`,
+            data() {
+                return {
+                    schoolName: 'chongqing high school',
+                    address: 'chongzhou road'
+                }
+            },
+            components: {
+                student
+            }
+        }
+
+        new Vue({
+            el: '.div',
+            components: {  //在里面时是复数形式，因为可能不止一个组件。在vue.component中是调用vue的component属性所以才是单数的！！
+                //在里面时是复数形式，因为可能不止一个组件。在vue.component中是调用vue的component属性所以才是单数的！！
+                //在里面时是复数形式，因为可能不止一个组件。在vue.component中是调用vue的component属性所以才是单数的！！
+                school,
+            }
+        })
+    </script>
+</body>
+
+</html>

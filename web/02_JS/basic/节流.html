@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <script>
+        // throttle 节流是什么： 减少一段时间内事件触发的频率
+        //          节流的运用： 鼠标键盘的多次触发事件，如：鼠标放在多个下拉菜单中来回晃动，会加大浏览器和CPU的资源消耗
+
+        // 所以throttle(节流)是对时间的优化
+
+        function throttle(fn, delay) {
+            let flag = true;
+            return function () {     //不管是防抖还是节流，在执行函数结束后都要用return返回执行函数
+                if (!flag) {
+                    return;
+                }
+                flag = false;
+                setTimeout(function () {
+                    fn()
+                    flag = true
+                }, delay)
+            }
+        }
+
+        window.onscroll = throttle(function () {
+            let scroll = document.documentElement.scrollTop
+            console.log(scroll);
+        }, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function countDown(time) {
+            var nowTime = new Date();
+            var inputTime = new Date(time);
+            // set a  target
+            var restTime = (nowTime - inputTime) / 1000;             // the time is 'ms' not 's',so need to /1000
+            var d = parseInt(restTime / 60 / 60 / 24);
+            d = d < 10 ? '0' + d : d;
+            var h = parseInt(restTime / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(restTime / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            var s = parseInt(restTime % 60);
+            s = s < 10 ? '0' + s : s;
+
+            return d + ' day ' + h + ' hour ' + m + ' minute ' + s + ' second '
+        }
+        console.log(countDown('2022-7-11 11:00:00'));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

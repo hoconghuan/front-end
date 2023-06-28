@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'ascsrnnsknnrsfhs';
+        var count = {};
+        for(i = 0; i < str.length;i++) {
+            var chars = str.charAt(i);
+            if(count[chars]){
+                count[chars]++;
+            }else {
+                count[chars] = 1;  
+            }
+        }
+        console.log(count);
+        
+        var max = 0;
+        var ch = ''
+        for(k in count) {
+            // var max = 0;
+            if(count[k] > max) {
+                 max = count[k];
+                 ch = k;
+                }
+
+            }
+            console.log(max);
+            console.log(ch); 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

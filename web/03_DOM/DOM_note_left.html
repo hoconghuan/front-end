@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea></textarea>
+    <button>send</button>
+    <ul>
+
+    </ul>
+    <script>
+        var btns = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        var text = document.querySelector('textarea');
+        btns.onclick = function () {
+            if (text.value != '') {
+                var li = document.createElement('li');
+                li.innerHTML = text.value;
+                ul.appendChild(li);
+                text.value = '';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

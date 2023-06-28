@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 100px auto;
+            width: 500px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+
+
+        th,
+        td {
+            border: 1px solid rgba(20, 16, 16, 0.861);
+            padding: 2px;
+            font-size: 16px;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>age</td>
+                <td>gender</td>
+                <td>opration</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <!-- now I haven't learned how to use SQL to get information, so just javascript to make it-->
+        </tbody>
+    </table>
+    <script>
+        // 1. create datas
+        var datas = [
+            {
+                name: 'andy',
+                age: '12',
+                gender: 'man'
+            },
+            {
+                name: 'penny',
+                age: '18',
+                gender: 'woman'
+            },
+            {
+                name: 'teddy',
+                age: '15',
+                gender: 'man'
+            },
+        ]
+
+        let thead = document.querySelector('thead')
+        // 2.create rows (tr) in tbody
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+
+            tbody.appendChild(tr);
+
+            // 3.create box (td ) in row (tr)
+            // continue circle  to get elements' properties
+            for (var k in datas[i]) {
+                // for(  k in arr[]) k在数组中循环遍历
+                // 'k' is the name of the property, like :  'name' in object (python library search system)
+                //object[k] is the value
+                var td = document.createElement('td');
+
+
+                // 4.  value in object gives 'tr'
+                td.innerHTML = datas[i][k]
+                tr.appendChild(td);
+            }
+
+            // 5.create 'delete'  td
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">delete</a>'
+            tr.appendChild(td);
+        }
+
+        // 1-5  create info, and delete  is not in the circle
+        var del = document.querySelectorAll('a')  //这里把每个数据都添加了删除项  所以要用ALL
+        for (var i = 0; i < del.length; i++) {
+            del[i].onclick = function () {
+                // node.removeChild(child)
+                // tbody.removeChild(this.parentNode.parentNode)  //this.parentNode.parentNode 是 tr
+                this.parentNode.parentNode.remove()
+                if (tbody.children.length < 1)
+                    thead.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

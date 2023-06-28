@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类定义的组件</title>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Demo extends React.Component {
+
+            //因为数据是是配置在DEMO中的，不用到react中去用constructor(){}函数继承， 直接写。
+            state = { isHot: true };
+
+            // 自定义方法选需要写成 箭头函数加赋值语句
+            changeWeather = () => {
+                this.setState({
+                    isHot: !this.state.isHot
+                })
+                console.log(this);
+            }
+
+
+            render() {
+                return <h2 onClick={this.changeWeather}>今天天气很{this.state.isHot ? '热' : '冷'}</h2>
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById("test"))
+
+
+
+    </script>
+
+
+</body>
+
+</html>

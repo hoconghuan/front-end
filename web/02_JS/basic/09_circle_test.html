@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var sum = 200;
+
+        choice = prompt('1 add money\n 2 use money \n 3 show money \n 4 quit\n choose your choice:');
+        while (choice == '1') {
+            add = prompt('please set the num:')
+            //    in here  the input number is a string,not a number,and if adds it directly, the sum will be 200XX XXdepends on how much you input. 
+            sum += parseInt(add);
+            alert('money is ' + sum);
+            break;
+        }
+
+        while (choice == '2') {
+            use = prompt('please set the num');
+            sum -= use; alert('money is ' + sum);
+            break;
+        }
+        while (choice == '3') {
+            alert('your money is: ' + sum);
+            break;
+        }
+        while (choice == '4') {
+            alert('thanks for your use');
+            break;
+        }
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

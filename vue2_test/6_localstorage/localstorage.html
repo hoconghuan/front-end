@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 数据的增删改查 -->
+    <button onclick="savaData()">click me save a data</button>
+    <button onclick="readData()">click me read a data</button>
+    <button onclick="deleteData()">click me delete a data</button>
+    <script>
+
+
+        let p = { name: 'andy', age: 36, }
+
+        function savaData() {
+            localStorage.setItem("msg", 'hello')
+            localStorage.setItem("msg2", JSON.stringify(p)) //想要在值中显示对象就要用JSON.stringify
+        }
+        function readData() {
+            const p = localStorage.getItem('msg2')
+            console.log(JSON.parse(p)); //JSON.parse解析 常量P
+        }
+
+        function deleteData() {
+            localStorage.removeItem('msg')
+        }
+    </script>
+</body>
+
+</html>

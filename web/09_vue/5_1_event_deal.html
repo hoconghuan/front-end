@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <h3>this is {{name}} 5 chapter</h3>
+        <button @click='showInfo1($event)'>tips 1</button>
+        <button @click='showInfo2($event,66)'>tips 2</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '.div',
+            data: {
+                name: 'andy'
+            },
+            methods: {
+                showInfo1(e) {
+                    alert('hello')
+                    console.log(e)
+                },
+                showInfo2(event, number) {
+                    console.log(event.target.innerHTML, number)
+                    alert('goodbye')
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

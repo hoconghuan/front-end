@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+
+            border: 1px solid black;
+            padding: 5px;
+            list-style: none;
+            float: left;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: red;
+            color: white;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class='current'>content</li>
+                <li>description</li>
+                <li>parameters</li>
+            </ul>
+        </div>
+        <div class='item_info'>
+
+            <div class="item" style="display:block"> product content</div>
+            <div class="item"> details of description</div>
+            <div class="item"> the real parameters the product contains</div>
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('.tab_list li').click(function () {      //class的要注意在前面加 '.' 。class的要注意在前面加 '.'。class的要注意在前面加 '.'
+                $(this).addClass('current').siblings().removeClass('current')
+                let index = $(this).index()
+                $('.item_info div').eq(index).show().siblings().hide()
+
+            })
+        })
+    </script>
+</body>
+
+</html>

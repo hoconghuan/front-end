@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="forward">forward</button>
+    <button class="backward">backward</button>
+    <button class="reload">reload</button>
+    <script>
+        var btnFor = document.querySelector('forward');
+        var btnBac = document.querySelector('backward');
+        var btnRld = document.querySelector('reload');
+
+
+        btnRld.addEventListener('click', function(e) {
+            location.reload();
+        })
+
+        btnFor.addEventListener('click', function(e){
+            history.forward();
+        })
+
+
+        btnBac.addEventListener('click', function(e){
+            history.back();
+        })
+    </script>
+    <!-- 在BOM里 这些操作没有卵用，因为浏览器都带了的，但是在自己设计OA系统时就是很有必要的，因为要有前进后退这些的按钮！ -->
+</body>
+</html>

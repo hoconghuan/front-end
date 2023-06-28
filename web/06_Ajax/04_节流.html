@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>click</button>
+    <script>
+        const btns = document.querySelectorAll('button');
+        // 创建标识变量
+        let isSending = false;//是否在发送请求
+
+        btns[0].onclick = function () {
+            if (isSending) {
+                xhr.abort();
+            }
+            var xhr = new XMLHttpRequest();
+            // 创建完对象后发送ajax请求,修改标识变量的值
+            isSending = true;
+            xhr.open('get', 'http://localhost:8080/delay')
+            xhr.send();
+            // 在ajax发送完请求之后等状态为4的时候恢复成false，
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    isSending = false
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

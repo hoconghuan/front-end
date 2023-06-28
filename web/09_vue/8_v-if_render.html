@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-if 和 js中的if表达式一样 
+    但 v-if 适用切换频率低的场景，因为不展示的DOM会直接移除。  一般用v-show来代替 等同于style里的display：none。
+    
+    v-if 判断相同的控制时 用父子级，且 标签为template-->
+    <div class="div">
+        <h2>{{n}}</h2>
+        <button @click="n++"></button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: '.div',
+
+            data: {
+                n: 0
+            }
+
+        })
+    </script>
+</body>
+
+</html>

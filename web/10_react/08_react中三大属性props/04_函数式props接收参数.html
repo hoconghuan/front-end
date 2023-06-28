@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+    </div>
+
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+    <script src="../prop-types.js"></script>
+
+    <script type="text/babel">
+
+        function Person(props) {
+            console.log(props);
+            let { name, age } = props
+            return (
+                <ul>
+                    <li>名字：{name}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+
+
+        ReactDOM.render(<Person name='andy' age={18} />, document.getElementById('test'))
+
+    </script>
+
+</body>
+
+</html>

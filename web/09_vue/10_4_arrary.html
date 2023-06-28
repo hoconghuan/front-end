@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+
+        <child v-for=" item in items" :message="item" :key="item.id"></child>
+        <!-- 使用 v-if的时候尽量在 后面补上 明确的 ‘键’ 及 每个元素都要绑定它唯一的标签  -->
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        Vue.component('child', {
+            props: ['message'],
+            template: '<div>{{message.text}}</div>'
+        })
+        new Vue({
+            el: '.div',
+            data: {  //Vue的data不能写成函数形式，而组件的必须写成函数形式
+                items: [
+                    { text: 'andy' },
+                    { text: 'shanwshark' },
+                    { text: 'redemption' }
+                ]
+
+            },
+        })
+
+
+    </script>
+</body>
+
+</html>

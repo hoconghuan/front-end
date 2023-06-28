@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get use</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 100px;
+        border: 1px solid pink
+    }
+</style>
+<!-- 
+    get 只是页面被动的接受服务端的请求
+  -->
+
+<body>
+    <button>click me</button>
+    <div class="box"></div>
+
+
+    <!-- 在前面做准备工作时先把服务端打开： 切换到ajax对应的文件夹下，使用命令 node server（服务器名字）。 让服务器先运行， 再测试环境。 -->
+
+    <script>
+        const btn = document.querySelector('button')
+        const box = document.querySelector('.box')
+        btn.onclick = function () {
+            // 创建xhr的响应对象
+            const xhr = new XMLHttpRequest();
+            // 初始化请求类型及网络地址
+            xhr.open('GET', 'http://127.0.0.1:8080/server');
+            // 发送请求
+            xhr.send();
+            // onreadystatechange中，readystate 有 0 1 2 3 4这五个状态
+            // 0表示为初始化  1表示open已调用完毕  2表示send方法调用完毕   3表示 服务端返回部分结果 4表示服务端返回了所有结果
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    // 响应码有：2XX 404 403  401 500
+                    // 在200-300都表示成功
+                    if (xhr.status === 200) {
+                        //  处理结果包括 行 头 空格 体
+
+                        // 响应码
+                        // console.log(xhr.status); // 状态码
+                        // console.log(xhr.statusText);//状态字符串
+                        // console.log(xhr.getAllResponseHeaders);//所有响应头
+                        // console.log(xhr.response);//响应体
+                        box.innerHTML = xhr.response
+                        //将xhr中的响应 赋值到 box的文本中
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

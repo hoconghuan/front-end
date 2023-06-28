@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{    
+            display: inline;
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="hour"></div>
+        <div>:</div>
+        <div class="minute"></div>
+        <div>:</div>
+        <div class="second"></div>
+    </div>
+    <script>
+        var hours = document.querySelector('.hour')
+        // object in class, document.querySelector('') inside  define
+        //  need + "."!!!!!!!
+        var minutes = document.querySelector('.minute')
+        var seconds = document.querySelector('.second')
+        var inputTime = new Date('2022-07-21 21:00:00')
+
+        countDown();
+        setInterval(countDown,1000)
+
+        function countDown(){
+            var nowTime = new Date();
+            var times = (inputTime - nowTime) / 1000;
+
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10? '0' + h : h;
+            hours.innerHTML = h;
+
+            var m = parseInt(times / 60 % 60);
+            m = m < 10? '0' + m : m;
+            minutes.innerHTML = m;
+
+            var s = parseInt(times % 60);
+            s = s < 10? '0' + s : s;
+            seconds.innerHTML = s;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../pic/1.jpeg" alt="">
+    <button>click</button>
+    <script>
+        //1. setTime use
+        // setTimeout(function(){
+        //     console.log('hi~')
+        // },3000)
+
+        // 2. setTime &  callback.
+
+        var pic = document.querySelector('img');
+        var timer = setTimeout(function(){
+            pic.style.display = 'none';
+        },5000)
+        var btns = document.querySelector('button');
+        btns.onclick = function(){
+            clearTimeout(timer);
+        }
+    </script>
+</body>
+</html>

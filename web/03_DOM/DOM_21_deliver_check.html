@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .frame {
+            position: relative;
+            margin: 100px 400px;
+
+        }
+
+        .content {
+            display: none;
+
+            height: 50px;
+            line-height: 50px;
+            width: 150px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            padding-left: 10px;
+
+
+        }
+
+        .dvl {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='frame'>
+        <div class="content"></div>
+        <input type="text" placeholder="Enter your delivery code" class="dlv">
+    </div>
+    <script>
+        var cont = document.querySelector('.content');
+        var dlv = document.querySelector('.dlv');
+        // 1. 'input' makes 'div' show the detail
+        dlv.addEventListener('keyup', fn)
+        function fn() {
+            if (dlv.value.length != 0) {
+                cont.style.display = 'block'
+                cont.innerText = this.value;
+            } else {
+                cont.style.display = 'none';
+                // if don't add 'else'  del input_words it will leave the last one.
+            }
+        }
+
+        // 2. when mouse moves out,  the 'div' shows must disappear
+
+
+        dlv.addEventListener('blur', fn1)
+        function fn1() {
+            cont.style.display = 'none';
+        }
+
+        // dlv.addEventListener('focus',fn1);
+        //     function fn1(){
+        //     if (this.value !== '') {
+        //         cont.style.display = 'block';
+        //     }
+        // }   
+
+        dlv.addEventListener('focus', function () {
+            if (this.value !== '') {
+                cont.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

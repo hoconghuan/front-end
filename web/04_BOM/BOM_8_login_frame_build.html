@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 设计页面时，每个元素都应要贴上标签，方便在CSS阶段 对元素进行修整 -->
+    <!-- 设计页面时，每个元素都应要贴上标签，方便在CSS阶段 对元素进行修整 -->
+    <!-- 设计页面时，每个元素都应要贴上标签，方便在CSS阶段 对元素进行修整 -->
+    <!-- 不能跳过 -->
+    <style>
+        /* CSS初始化 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        clearfix::before,clearfix::after{
+            display:table;
+            content: "";
+        }
+        clearfix::after{
+            clear: both;
+        }
+        clearfix{
+            *zoom: 1;
+        }
+        a{
+            text-decoration:none;
+            color: #000;
+        }
+        /* 设置点击页面 */
+        .jump{
+            
+            margin: 200px auto;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;  
+        }
+        
+        /* 设置登录页面 */
+        .login{
+            display:none; 
+            width: 512px;
+            height: 300px;
+            position: fixed;
+            border: #ebebeb solid 1px;
+            background: #ffffff;
+
+            /* 这里和JS中找鼠标移动中心一样的，左边和上边都是50%， 再将框向自己的左边和上边再缩50% 及-50% */
+            left: 50%;
+            top: 50%;
+            transform:translate(-50%, -50%);
+
+            box-shadow:0 0 20px #ddd ;
+            z-index: 2;
+            
+        }
+        .login_title{
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            text-align: center;
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+            position: relative;
+            /* 增加move指针 */
+            cursor: move;
+        }
+        .login_input_content{
+            margin-top:30px;
+        }
+        .login_info{
+            overflow: hidden;
+            margin: 0px 0px 20px 0px;
+        }
+        .login_info label {
+            float: left;
+            width: 90px;
+            padding: 10px;
+            text-align: right;
+            line-height: 20px;
+            height: 20px;
+            font-size: 16px;
+        }
+        .input{
+            float: left;
+            padding: 10px;
+            line-height: 20px;
+            height: 20px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            font-size:16px;
+        }
+        .close{
+            position:absolute;
+            height: 40px;
+            width: 40px;
+            font-size:12px;
+            line-height: 40px;
+            right: -20px;
+            top: -20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: #ebebeb solid 1px;
+        }
+        .btn{
+            margin: 0 25%;  
+            width: 50%;    
+            line-height: 40px;
+            font-size: 14px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+        .login_bg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+    <!--                 先建骨架html
+    1.注册按钮页面
+    2.注册页面
+            2.1 大盒信息构架
+            2.2 最重要的： 关闭按钮  -->
+<div>
+    <div class="jump"><a href="javascript:;">click to login</a> </div>
+    <div class="login">
+        <div class="login_title">
+            login information
+            <div class="close"><a href="javascript:;">close</a></div>
+        </div>
+        <div class="login_input_content">
+            <div class="login_info">
+                <label >username: </label> <input type="text" placeholder="please input your username" class="input">
+            </div>
+            <div class="login_info">
+                <label >password: </label><input type="password" class="input" >
+            </div>
+        </div>
+        <button class="btn">submit</button>
+    </div>
+    <div id="bg" class="login_bg"></div>
+</div>
+
+    <!--      HTML和CSS没问题后，现在开始JS -->
+    <script>
+        // 申明变量
+        var jump = document.querySelector('.jump'); 
+        var login = document.querySelector('.login');
+        var bg = document.querySelector('.login_bg')
+        var cls = document.querySelector('.close');
+        var titl = document.querySelector('.login_title')
+        // class定义的变量在申明的时候是(".XX")， '.' 不要忘记！！
+        // '.' 不要忘记！！
+        // '.' 不要忘记！！
+        // '.' 不要忘记！！
+        
+        // 点击/关闭设置
+        jump.addEventListener('click',function(e) {
+            login.style.display = 'block';
+            this.style.display = 'none';
+            bg.style.display = 'block';
+        })
+        cls.addEventListener('click',function(e){
+            login.style.display = 'none';
+            bg.style.display = 'none';
+            jump.style.display = 'block';
+        })
+        
+        // 添加移动事件
+        titl.addEventListener('mousedown',function(e){
+            var x = e.pageX -   login.offsetLeft;
+            var y = e.pageY -   login.offsetTop;
+            document.addEventListener('mousemove',move)
+            // 盒子中所有的都能控制函数就用document！
+            function move(e){
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+                // 获取用 offset（）, 赋值用style！获取用 offset（）, 赋值用style！获取用 offset（）, 赋值用style！
+            }
+            document.addEventListener('mouseup',function(e){
+                document.removeEventListener('mousemove',move)
+            })
+           
+        })
+            
+// 在JS中 如果想把函数提出来,例如: btn.addEventListener('click',function(e){})这种
+// 可以改成btn.addEventListener('click',move),然后+ function move(e){} 
+// 注意：在监听里面的'move'后面是不加 '（）'的， 因为这个只是指调用哪个函数，所有要的信息在函数里写好就行了。
+
+    </script>
+</body>
+</html>

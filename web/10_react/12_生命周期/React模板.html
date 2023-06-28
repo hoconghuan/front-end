@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+    <script src="../prop-types.js"></script>
+
+    <script type="text/babel">
+
+        class Demo extends React.Component {
+
+            state = {
+                opacity: 1
+            }
+            //组件挂载 
+            componentDidMount() { //方法名称： 组件已经挂载了
+                this.timer = setInterval(() => {
+
+                    this.state.opacity -= 0.1
+                    if (this.state.opacity <= 0) {
+                        this.state.opacity = 1    //因为React不是双向绑定的，这里设置了值为1是死的，即运行完后是固定的1，不能参与响应变化。 所以下面才设 setState
+                    }
+                    this.setState({ opacity: this.state.opacity })
+                }, 100)
+            }
+
+            // 组件卸载
+            componentWillUnmount() { //卸载的方法名称： 组件将要卸载
+                clearInterval(this.timer)
+            }
+
+            delDom = () => { //组件销毁
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>React生命周期</h1>
+                        <h2 style={{ opacity: this.state.opacity, color: 'red' }} >渐变行-------------------------</h2>
+                        <button onClick={this.delDom}>销毁DOM</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById('test'))
+
+    </script>
+
+</body>
+
+</html>

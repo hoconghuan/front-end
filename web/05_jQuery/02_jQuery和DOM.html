@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //  DOM属于原生JS使用API调用的接口
+
+        // const div = document.querySelector('div');
+        // div.style.display = 'none';
+
+
+        // jQuery属于它自己的调用接口
+
+        $('div').hide()  // 这里是调用hide函数
+
+    </script>
+</body>
+
+</html>

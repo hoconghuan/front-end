@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery in ajax</title>
+</head>
+
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>noraml</button>
+    <script src="jquery.min.js"></script>
+    <script>
+        // 用jQuery就不能再用原生JS和原生API来
+
+        //jQuery get
+        $('button').eq(0).click(function () {
+            $.get('http://localhost:8080/jQuery-serve', { a: 100, b: 200 }, function (data) {
+                console.log(data);
+            }, 'json')
+        })
+
+        //jQuery post
+        $('button').eq(1).click(function () {
+            $.post('http://localhost:8080/jQuery-serve', { a: 100, b: 200 }, function (data) {
+                console.log(data);
+            },)
+        })
+
+        // jQuery ajax
+        $('button').eq(2).click(function () {
+            $.ajax({
+                //url
+                url: 'http://localhost:8080/jQuery-serve',
+                //参数data
+                data: {
+                    a: 100,
+                    b: 200
+                },
+                //请求类型: get post delete push
+                type: 'get',
+                // 响应体结果
+                dataType: 'json',
+                //回调
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

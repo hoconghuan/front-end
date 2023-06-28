@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol {
+            align-content: center;
+            margin: 15%;
+        }
+
+        li {
+            display: inline-block;
+            align-content: center;
+        }
+
+        img {
+            height: 100px;
+        }
+
+        body {
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- change background's picture -->
+    <ol>
+        <li><img src="../pic/1.jpeg" alt=""></li>
+        <li><img src="../pic/2.jpeg" alt=""></li>
+        <li><img src="../pic/3.jpeg" alt=""></li>
+
+    </ol>
+    <script>
+        var imgs = document.getElementsByTagName('img');
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                document.body.style.backgroundImage = `url(  ${this.src}  )`;
+            }
+        }
+    </script>
+</body>
+
+</html>

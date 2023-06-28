@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <h2>person list</h2>
+        <input type="text" name="" placeholder="请输入关键词" v-model="keyWord">
+        <button @click="sortType = 1">rise</button>
+        <button @click="sortType = 2">down</button>
+        <button @click="sortType = 0">normal</button>
+        <ul>
+            <li v-for="(p,index) of filterPersons" :key="p.id">
+                {{p.name}}-{{p.age}}--{{p.gender}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: '.div',
+            // sortType: 0, 放在这里是读不出来的！！
+
+            // 数据只能存在data中，函数和data平级！
+            // 数据只能存在data中，函数和data平级！
+            // 数据只能存在data中，函数和data平级！
+            data: {
+                keyWord: '',
+                sortType: 0,
+                persons: [
+                    { id: '001', name: '马冬梅', age: '33', 'gender': 'female' },
+                    { id: '002', name: '周冬雨', age: '18', 'gender': 'female' },
+                    { id: '003', name: '周杰伦', age: '29', 'gender': 'male' },
+                    { id: '004', name: '温兆伦', age: '22', 'gender': 'male' }
+                ],
+
+            },
+            computed: {
+                filterPersons() {
+                    const arr = this.persons.filter((p) => {
+                        return p.name.indexOf(this.keyWord) !== -1
+                    })
+                    if (this.sortType) {
+                        arr.sort((p1, p2) => {
+                            return this.sortType === 1 ? p1.age - p2.age : p2.age - p1.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+    </div>
+    <div id="test2">
+    </div>
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+    <script src="../prop-types.js"></script>
+
+    <script type="text/babel">
+
+        class Person extends React.Component {
+
+            render() {
+                console.log(this);
+                return (
+                    < ul >
+                        <li>姓名：{this.props.name}</li>
+                        <li>年龄：{this.props.age}</li>
+                        <li>性别：{this.props.gender}</li>
+                    </ ul>
+                )
+            }
+        }
+
+        Person.propTypes = {   //这是是对person类属性的限制
+            name: PropTypes.string.isRequired   // PropTypes.xxx 中 首字母是大写的， 而在类的 propTypes小写的
+        }
+        Person.defaultProps = { //设置默认属性
+            gender: "male",
+        }
+
+        const laoliu = { name: 'laoiu', age: 18 }
+        ReactDOM.render(<Person name='andy' age={18} />, document.getElementById('test'))
+        ReactDOM.render(<Person {...laoliu} />, document.getElementById('test2'))
+    </script>
+
+</body>
+
+</html>

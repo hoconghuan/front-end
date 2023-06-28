@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        familyName:<input type="text" v-model="familyName"> <br><br>
+        <!--  v-model 双向绑定  -->
+        firstName:<input type="text" v-model="firstName"> <br><br>
+        fullName:<span>{{fullName()}}</span>
+        <!-- 在fullname中如果直接写{{fullname}}只会把函数写出来，要想把值写出来时{{fullname（）}} -->
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: '.div',
+            data: {
+                familyName: 'zhang',
+                firstName: 'san'
+            },
+            methods: {
+                fullName() {
+                    return this.familyName + '-' + this.firstName
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

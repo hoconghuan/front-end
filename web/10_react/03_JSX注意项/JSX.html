@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+
+
+    <script src="../react.development.js"></script>
+    <script src="../react-dom.development.js"></script>
+    <script src="../babel.min.js"></script>
+
+    <script type="text/babel">
+        let MyId = 'andy'
+        let MyTitle = 'react中的JSX'
+
+        const VDOM = (
+            <div>
+                <h2>haha</h2>
+                <h2 className="title" id={MyId}>
+                    <span style={{ color: 'white', fontSize: '50px' }}>
+
+                        {MyTitle}
+                    </span>
+                </h2>
+            </div>
+
+        )
+
+        ReactDOM.render(VDOM, document.getElementById("test"))
+
+
+        // JSX语法：    
+        // 1、虚拟DOM不用引号包裹
+        // 2、标签中混入JS表达式时用{}, 不用像jQuery、Vue一样 用${}，省略了  $ 符号；
+        // 3、在样式类中 使用的是 className 因为class是类的关键字。
+        // 4、html写内联样式时只能用{}包裹成obj形式
+        //5、虚拟DOM只能有一个根标签
+        //6、标签必须闭合
+
+    </script>
+
+
+</body>
+
+</html>

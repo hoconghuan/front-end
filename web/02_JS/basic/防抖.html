@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debounce</title>
+    <style>
+        h3 {
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <h3>hhh</h3>
+    <script>
+        // debounce  防抖是什么：在一定时间内事件触发，N秒后执行回调函数，如果在N秒后再次触发则重新计时
+        //           防抖的运用：连续点击只响应最近一次
+
+        //所以debounce(防抖)是对事件的优化 
+
+        window.onscroll = debounce(function () {
+            let scroll = document.documentElement.scrollTop
+            console.log(scroll)
+        }, 1000)
+
+        let timer = null;
+        function debounce(fn, delay) {
+
+            return function () {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(fn, delay)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

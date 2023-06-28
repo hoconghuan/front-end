@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 
+        事件修饰符：
+        prevent  阻止默认事件
+        stop     阻止事件冒泡
+        once     事件只能触发一次
+     -->
+
+<body>
+    <div class="div">
+        <h2>{{name}},welcome to the page</h2>
+        <a href="http://www.baidu.com" @click.prevent="info">click msg</a>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: '.div',
+            data: {
+                name: 'andy'
+            },
+            methods: {  // 这里是‘methods' 不是'method'！!
+                // 这里是‘methods' 不是'method'！!
+                // 这里是‘methods' 不是'method'！!
+
+                info() {
+                    alert('hello')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 高阶函数的定义：
+        // 1、传参是函数；
+        // 例子: setTimeout(function () { })    Promise
+
+        // 2、返回的是函数；
+        function sum(a) {
+            return (b) => {
+                return a + b;
+            }
+        }
+        sum(a)(b)   //自定义函数的两次传参
+
+        // 函数柯里化：
+        // 通过函数的调用实现多次接收返回函数方式的统一处理
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejs 模板</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        option {
+            font-size: 36px;
+            font-weight: bold;
+
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <% for( let student of students ) { %>
+        <%= student.name %>- <%= student.age %>- <%=student.gender %>
+                    <br>
+                    <% } %>
+                        <!-- 在ejs中，除了变量是用 <% %>表示外，剩下的和网页结果一模一样 -->
+
+                        <hr>
+                        <% if (students && students.length> 0) { %>
+
+                            <table>
+                                <option>students list</option>
+                                <thead>
+                                    <tr>
+                                        <td>number</td>
+                                        <td>name</td>
+                                        <td>age</td>
+                                        <td>gender</td>
+                                        <td>handles</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for( let student of students ) { %>
+                                        <tr>
+                                            <td>
+                                                <%= student.id %>
+                                            </td>
+                                            <td>
+                                                <%= student.name %>
+                                            </td>
+                                            <td>
+                                                <%= student.age %>
+                                            </td>
+                                            <td>
+                                                <%= student.gender %>
+                                            </td>
+                                            <td>
+                                                <a onclick="return confirm('Are you sure??')"
+                                                    href="/delete-student?id=<%= student.id %>">delete</a>
+                                                <a href="#">change</a>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+
+                            <% } else { %>
+                                <h1>here is no student information!</h1>
+                                <% } %>
+
+
+                                    <hr>
+                                    <form action="/add-student" method="post">
+                                        <div>
+                                            name:<input type="text" name="name">
+                                        </div>
+                                        <div>
+                                            age:<input type="number" name="age">
+                                        </div>
+                                        <div>
+                                            gender:<input type="radio" name="gender" value="male">man
+                                            <input type="radio" name="gender" value="female">woman
+                                        </div>
+                                        <div>
+                                            <button> sumbit</button>
+                                        </div>
+                                    </form>
+</body>
+
+</html>

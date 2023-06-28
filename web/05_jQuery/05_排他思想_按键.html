@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+    <button>点击</button>
+
+    <script>
+        $(() => {
+            $('button').click(function () {
+                $(this).css('background', 'pink')
+
+                // jQuery里有隐式迭代不用去循环遍历了
+
+                $(this).siblings().css('background', '') // 这里的siblings是函数，不是属性！
+                // 这里的siblings是函数，不是属性！
+                // 这里的siblings是函数，不是属性！
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- tradition events_get and  listener events_get -->
+
+    <button>tradition events_get</button>
+    <button>listener events_get</button>
+    <script>
+        var but  = document.querySelectorAll('button')
+        but[0].onclick = function(){
+            alert('hi');    
+        }
+        but[0].onclick = function(){
+            alert('I am here');    
+        }
+
+        but[1].addEventListener('click',function(){
+            alert('hi');
+        })
+        but[1].addEventListener('click',function(){
+            alert('I am here');
+        })
+        // tradition events_get only get the last one, but listener events_get can get all function in one events
+    </script>
+</body>
+</html>

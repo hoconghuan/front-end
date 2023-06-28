@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "keli">keli</p>
+    <p id = "wanye">wanye</p>
+    <script>
+      // 1.get elements
+        var keli = document.getElementById("keli");
+        var wanye = document.getElementById("wanye");
+        var img = document.getElementById("img");
+        // 2. set event
+        keli.onclick = function(){
+            img.scr = 'XXXX';
+            img.title = 'keli';
+        }
+        wanye.onclick = function(){
+            img.scr = 'XXXX';
+            img.title = 'wanye';
+        }
+    </script>
+</body>
+</html>

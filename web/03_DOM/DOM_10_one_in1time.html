@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- each time only one button changed its background color -->
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <script>
+        var btn = document.getElementsByTagName('button');
+
+        for (let i = 0; i < btn.length; i++) { //拿到每个按键  
+            btn[i].onclick = function () {      // 绑定点击事件
+                for (let i = 0; i < btn.length; i++) {
+                    btn[i].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = 'pink';
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

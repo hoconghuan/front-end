@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <input type="number"  />
+    <button>click</button>
+</div>
+    <script>
+        var but = document.querySelector('button');
+        var time = 60;
+        // querySelector(),   ()inner  adds ''
+        but.addEventListener('click',function() {
+            but.disabled = true;
+            var countTime = setInterval(function() {
+                
+                if( time == 0){
+                    clearInterval(countTime); 
+                    but.disabled = false;
+                    but.innerHTML = 'click';
+                    time = 60;
+                }else{
+                    but.innerHTML = time +'s left'
+                    time--;
+                }
+            },1000)
+        })
+
+    </script>
+    
+</body>
+</html>

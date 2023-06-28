@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class = "start">start</button>
+    <button class = "stop">stop</button>
+    <script>
+        var begin = document.querySelector(".start");
+        var stop = document.querySelector(".stop");
+        // set a globe variate timer in 'NULL' here
+        var timer = null;
+        begin.addEventListener("click", function(e) {
+             timer = setInterval(function() {
+                // timer in start's circle, so it's a  part variate,if put timer in stop's circle, it'll show wrong.
+                // so need to set a timer and globel variate
+                console.log('hello');             
+            },1000)
+        })
+        stop.addEventListener("click", function(e) {
+            clearInterval(timer);
+        })
+        // 除了在外面用var申明变量timer，还可以直接在begin里面 加timer， timer 不加var 就是全局变量。
+        // 除此之外还可以直接用let 代替 var 也可以不报错。
+    </script>
+</body>
+</html>

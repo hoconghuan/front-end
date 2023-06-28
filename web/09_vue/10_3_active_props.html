@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <input type="text" v-model="MSG"> <br>
+        <child :message="MSG"></child>
+
+    </div>
+    <script>
+        Vue.component('child', {
+            props: ['message'],
+            template: '<span>{{message}}</span>'
+        })
+        new Vue({
+            el: '.div',
+            data: {
+                MSG: 'hello'
+            }
+        })
+    </script>
+</body>
+<!-- 为什么明明在前面的vue中创建了child标签，在 template中还要在里面加 span 标签
+    因为在控制台中只看到 span标签，而在vue中只能看到child标签。 两个标签服务的对象不同，所有都不能省略。 -->
+
+</html>

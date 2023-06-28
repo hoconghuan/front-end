@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0; 
+        }
+        div{
+            margin: 100px auto; 
+            position: relative;
+            width: 900px;
+            height: 40px;
+        }
+        span{
+            position: absolute;
+            float: left; 
+            left: 0;
+            top: 0;
+            width: 80px;
+            z-index: -1;
+        }          
+         
+        ul{
+            position:absolute;
+            float: left;
+        }
+        li{
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            list-style-type: none;
+            font-size:18px;
+            float:left;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover{ 
+            color:blueviolet
+        }
+        .current{
+            color:blue;
+        }
+    </style>
+    <script src="animate.js"></script>
+    <script>
+        window.addEventListener('load', function(){
+            // 1. 获取元素
+            var span = document.querySelector('span');
+            var lis = document.querySelectorAll('li');
+            //3. 添加了点击事件图片还是会返回初始值， 就需要声明一个变量来接收现在点击事件过后该位置的数据
+            var pos = 0;     
+
+
+            // 2. 绑定事件
+            for(var i = 0; i < lis.length; i++){
+                lis[i].addEventListener('mouseenter', function(){
+                    animate(span,this.offsetLeft);
+                })
+                lis[i].addEventListener('mouseleave', function(){
+                    animate(span,pos);
+                    
+                })
+                lis[i].addEventListener('click', function() {
+                   pos = this.offsetLeft;
+                });
+            }
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <span><img src="..//pic/cloud.gif" alt=""></span>
+        <ul>
+            <li class="current"><a href="#">menu</a></li>
+            <li><a href="#">product</a> </li>
+            <li><a href="#">position</a></li>
+            <li><a href="#">content</a></li>
+            <!-- 在加'a'链接时，一定要在引导中加'javasciript:;' 或者是'#',防止链接跳转-->
+        </ul>
+    </div>
+</body>
+</html>

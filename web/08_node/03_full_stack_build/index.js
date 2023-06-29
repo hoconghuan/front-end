@@ -35,6 +35,9 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 // 配置请求体
 app.use(express.urlencoded({ extended: true }))
 
+
+
+// 下面是服务器对客户端的响应
 app.use('/students', (req, res) => {
     res.render('students', { students })
 })
@@ -60,6 +63,25 @@ app.post('/add-student', (req, res) => {
 app.get('/delete-student', (req, res) => {
     let id = + req.query.id
     students = students.filter(student => student.id !== id)
+
+    res.redirect('/students')
+})
+
+app.get('/update-student', (req, res) => {
+    let id = + req.query.id
+    let student = students.find(student => student.id == id)
+
+    console.log(student);
+    res.render('updates', { student })
+})
+app.post('/update-student', (req, res) => {
+    let id = + req.query.id
+    let student = students.find(student => student.id == id)
+    let { name, age, gender } = req.body
+
+    student.name = name
+    student.age = age
+    student.gender = gender
 
     res.redirect('/students')
 })

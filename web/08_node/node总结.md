@@ -19,5 +19,7 @@
 
         post:  服务端用 req.body 接收参数   但是需要在之前使用express的urlencoded  app.use(express.urlencoded({extended: true})) 后面的配置必须有，虽然现在没意义
  
-    3、 用ejs模块引擎编写服务端网页代码，除了动态数据用 <% %> 表示， 其他和普通页面是一致的， 需要先使用ejs    app.set('view engine', 'ejs')     app.set('views'，path.join(__dirname, '可视对象'))
-！
+    3、 用ejs模块引擎编写服务端网页代码，除了动态数据用 <%= %> 表示， 其他和普通页面是一致的， 需要先使用ejs    app.set('view engine', 'ejs')     app.set('views'，path.join(__dirname, '可视对象'))。
+        动态数据是<%= %> 里面是填数据， <% %>里面填的是JS语句
+        动态数据是<%= %> 里面是填数据， <% %>里面填的是JS语句
+        动态数据是<%= %> 里面是填数据， <% %>里面填的是JS语句

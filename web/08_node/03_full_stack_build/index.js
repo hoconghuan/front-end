@@ -12,8 +12,6 @@ let students = require('./data/students.json')
 app.set('view engine', 'ejs') //设置模块
 app.set('views', path.join(__dirname, 'views')) // 第一个是node中的名字，第二个是跳转的路径
 
-app.use(express.static(path.resolve(__dirname, 'public'))) //设置默认路径
-
 // 配置请求体
 app.use(express.urlencoded({ extended: true }))
 
@@ -41,7 +39,7 @@ app.post('/add-student', (req, res) => {
 
     // 将文件写入本地json文件中
     fs.writeFile(path.resolve(__dirname, './data/students.json'), JSON.stringify(students)).then(
-        res.redirect('/students')    // 添加完数据后需要返回学生列表的路径，使用重定向
+        res.redirect('/students')    // 添加完数据后使用重定向返回学生列表的路径
 
     ).catch(err => {
 
@@ -60,7 +58,7 @@ app.get('/delete-student', (req, res) => {
 
     })
 
-    res.redirect('/students')
+
 })
 
 // 更新学生
@@ -87,7 +85,7 @@ app.post('/update-student', (req, res) => {
 
     })
 
-    res.redirect('/students')
+
 })
 
 

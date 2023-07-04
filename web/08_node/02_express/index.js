@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 // 因为对服务器来说所有的文件都是需要隐藏的，这行代码的意思是调用express的static方法把某个文件夹对外可以访问
-app.use(express.static(path.join(__dirname, './public')))
+app.use(express.static(path.join(__dirname, './public'))) //设置静态默认地址
 
 app.get('/server', (req, res) => {
 

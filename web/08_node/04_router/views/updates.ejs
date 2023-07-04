@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/students/update?id=<%= student.id %>" method="post">
+        <div>
+            name:<input type="text" name="name" value="<%=student.name %>">
+        </div>
+        <div>
+            age:<input type="number" name="age" value="<%=student.age %>">
+        </div>
+        <div>
+            gender:
+            <input type="radio" name="gender" value="male" <%=student.gender==='male' && 'checked' %>>man
+            <input type="radio" name="gender" value="female" <%=student.gender==='female' && 'checked' %>>woman
+        </div>
+        <div>
+            <button> sumbit</button>
+        </div>
+    </form>
+</body>
+
+
+</html>

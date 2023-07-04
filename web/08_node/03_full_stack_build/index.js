@@ -41,14 +41,11 @@ app.post('/add-student', (req, res) => {
 
     // 将文件写入本地json文件中
     fs.writeFile(path.resolve(__dirname, './data/students.json'), JSON.stringify(students)).then(
-        res.redirect('/students')
+        res.redirect('/students')    // 添加完数据后需要返回学生列表的路径，使用重定向
 
     ).catch(err => {
 
     })
-
-
-    // 添加完数据后需要返回学生列表的路径，使用重定向
 
 })
 

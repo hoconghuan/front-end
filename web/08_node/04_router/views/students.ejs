@@ -65,8 +65,8 @@
                         </td>
                         <td>
                             <a onclick="return confirm('Are you sure??')"
-                                href="/delete-student?id=<%= student.id %>">delete</a>
-                            <a href="/update-student?id=<%= student.id %>">change</a>
+                                href="/students/delete?id=<%= student.id %>">delete</a>
+                            <a href="/students/update?id=<%= student.id %>">change</a>
                         </td>
                     </tr>
                     <% } %>
@@ -79,7 +79,7 @@
 
 
                 <hr>
-                <form action="/add-student" method="post">
+                <form action="/students/add" method="post">
                     <div>
                         name:<input type="text" name="name">
                     </div>

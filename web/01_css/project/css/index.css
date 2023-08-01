@@ -1,0 +1,143 @@
+/* base set */
+.container {
+    width: 1190px;
+    margin: 0 auto;
+
+}
+
+/* base set */
+
+/* #region topbar  */
+.topbar {
+    height: 30px;
+    background-color: #ECECEC;
+}
+
+/* #region welcome */
+.welcome {
+    height: 30px;
+    line-height: 30px;
+    font-size: 0;
+    color: #666666;
+}
+
+.welcome span,
+a {
+    font-size: 12px;
+}
+
+.welcome-text {
+    margin-right: 28px;
+}
+
+.login-in {
+    padding-right: 10px;
+    border-right: 1px solid #666666;
+
+}
+
+.login-out {
+    padding-left: 10px;
+}
+
+/* #endregion welcome */
+
+/* #region topbar-nav */
+
+
+.topbar-nav .list {
+    height: 30px;
+    line-height: 30px;
+}
+
+.topbar-nav .list li {
+    float: left;
+}
+
+.topbar-nav .list li a {
+    padding: 0 15px;
+    border-right: 1px solid #666666;
+}
+
+.topbar-nav .list li:first-child a {
+    padding-left: 0;
+    /* 在css中选择器只有在li这些 */
+}
+
+.topbar-nav .list li:last-child a {
+    padding-right: 0;
+    border: 0;
+}
+
+/* #endregion topbar-nav */
+
+/*  #endregion  topbar*/
+
+/* #region hearder */
+.header {
+    height: 120px;
+    background-color: pink;
+}
+
+.search input {
+    width: 508px;
+    height: 34px;
+    border: 1px solid #DD302D;
+}
+
+.search form {
+    margin-top: 42px;
+    font-size: 0;
+    /* 当两个行内元素之间有缝隙时，让它们的父元素font-size 为0 就可以了； 如果两个元素水平不对齐用 vertical-align不是默认就行 */
+}
+
+.search button {
+    width: 80px;
+    height: 36px;
+    background-color: #DD302D;
+    vertical-align: top;
+    background-image: url('../images/serch_icon.png');
+    background-repeat: no-repeat;
+    background-position: 28px 6px;
+}
+
+/* #endregion hearder */
+
+/* #region main-nav */
+
+.main-nav {
+    height: 49px;
+    border-bottom: 1px solid #DD302D;
+}
+
+.total-goods {
+    width: 190px;
+    height: 48px;
+    background-color: #DD302D;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 48px;
+}
+
+.main-nav-lists li {
+    float: left;
+
+}
+
+.main-nav-lists li a {
+    font-size: 16px;
+    line-height: 48px;
+    margin: 0 10px;
+
+}
+
+/* #endregion main-nav */
+
+/* #region main */
+.slide {
+    height: 158px;
+    width: 190px;
+}
+
+/* #endregion main */

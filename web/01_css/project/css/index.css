@@ -135,9 +135,247 @@ a {
 /* #endregion main-nav */
 
 /* #region main */
+
+/* #region main-content */
+.main {
+    margin-top: 10px;
+}
+
+.slide,
+.banner,
+.other {
+    float: left;
+    height: 458px;
+}
+
+.slide,
+.banner {
+    margin-right: 10px;
+}
+
+/* #region slide */
 .slide {
-    height: 158px;
+    width: 190px;
+    background-color: #F4F4F4;
+    position: relative;
+}
+
+.main-content .slide li {
+    /* margin: 7px 0;   
+    很容易想到用 margin 或者padding 来设置高度，但是还有种更快捷的方法设置列表的高度  行高。 而且用上面的那些高度和设计稿上的不一样，行高能完美解决问题*/
+    padding-left: 16px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.main-content .slide li .second-menu {
+    width: 700px;
+    height: 458px;
+    position: absolute;
+    background-color: #F4F4F4;
+    top: 0;
+    left: 190px;
+    display: none;
+}
+
+.main-content .slide-nav li:hover .second-menu {
+    display: block;
+}
+
+.second-menu dl {
+    width: 670px;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 20px;
+}
+
+.second-menu dt,
+dd {
+    float: left;
+}
+
+.second-menu dt {
+    font-weight: bold;
+    padding-right: 10px;
+    width: 70px;
+    height: 20px;
+}
+
+.second-menu dd a {
+    padding: 0 10px;
+    border-left: solid 1px #999999;
+}
+
+.main-content .slide li:hover {
+    background-color: #DD302D;
+}
+
+.main-content .slide li a {
+    font-size: 14px;
+}
+
+.main-content ul>li a:hover {
+    color: white;
+}
+
+/* #endregion slide */
+
+/* #region banner */
+.banner {
+    width: 690px;
+}
+
+/* #endregion banner */
+
+/* #region other */
+.other {
+    width: 290px;
+}
+
+/* #region top */
+.other .top {
+    width: 260px;
+    height: 156px;
+    border: solid 1px #D9D9D9;
+    margin-bottom: 10px;
+    padding: 0 14px;
+}
+
+.other .top .brief {
+    width: 262px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-bottom: solid 1px #D9D9D9;
+}
+
+.other .top .brief a {
+    font-size: 14px;
+    width: 262px;
+    height: 14px;
+
+}
+
+.other .top ul li a:hover {
+    color: #DD302D;
+}
+
+.other .top li {
+    margin: 6px 0;
+}
+
+.other .top li:first-child {
+    margin-top: 8px;
+}
+
+/* #endregion top */
+
+/* #region bottom */
+.other .bottom {
+    width: 290px;
+    height: 290px;
+    overflow: hidden;
+}
+
+.other .bottom ul:first-child {
+    margin-top: 16px;
+}
+
+.other .bottom ul:nth-child(2) {
+    margin: 17px 0;
+}
+
+.other .bottom li {
+    width: 48px;
+    height: 70px;
+    float: left;
+    margin: 0 11px;
+    text-align: center;
+}
+
+.other .bottom li .picture {
+    width: 48px;
+    height: 48px;
+    background-image: url(../images/精灵图-侧边功能.png);
+    cursor: pointer;
+}
+
+.other .bottom li:first-child {
+    margin-left: 16px;
+}
+
+.other .bottom ul:nth-child(1) li:nth-child(1) .picture {
+    background-position: 0 0;
+}
+
+.other .bottom ul:nth-child(1) li:nth-child(2) .picture {
+    background-position: -48px 0;
+}
+
+.other .bottom ul:nth-child(1) li:nth-child(3) .picture {
+    background-position: -96px 0;
+}
+
+.other .bottom ul:nth-child(1) li:nth-child(4) .picture {
+    background-position: -144px 0;
+}
+
+.other .bottom ul:nth-child(2) li:nth-child(1) .picture {
+    background-position: 0 -48px;
+}
+
+.other .bottom ul:nth-child(2) li:nth-child(2) .picture {
+    background-position: -48px -48px;
+}
+
+.other .bottom ul:nth-child(2) li:nth-child(3) .picture {
+    background-position: -96px -48px;
+}
+
+.other .bottom ul:nth-child(2) li:nth-child(4) .picture {
+    background-position: -144px -48px;
+}
+
+.other .bottom ul:nth-child(3) li:nth-child(1) .picture {
+    background-position: 0 -96px;
+}
+
+.other .bottom ul:nth-child(3) li:nth-child(2) .picture {
+    background-position: -48px -96px;
+}
+
+.other .bottom ul:nth-child(3) li:nth-child(3) .picture {
+    background-position: -96px -96px;
+}
+
+.other .bottom ul:nth-child(3) li:nth-child(4) .picture {
+    background-position: -144px -96px;
+}
+
+/* #endregion bo        ttom */
+/* #endregion other */
+
+/* #endregion main-content */
+
+/* #region next-content */
+.next-content {
+    margin-top: 10px
+}
+
+.next-content img {
+    float: left;
+    margin-right: 10px;
+    height: 190px;
+    width: 240px;
+}
+
+.next-content img:last-child {
+    margin-right: 0;
+}
+
+.next-content img:nth-child(1) {
     width: 190px;
 }
 
+/* #endregion next-content */
 /* #endregion main */

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .page {
+            height: 100vh;
+            background-image: url('./imags/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: 1s linear
+        }
+
+        header {
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        li {
+            margin-right: 20px;
+        }
+
+        ul a {
+            color: white;
+            font-size: 20px;
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 10px;
+
+        }
+
+        ul a:last-child {
+            margin-right: 0;
+        }
+
+
+        .content {
+            height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav {
+            width: 1000px;
+            height: 300px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .item {
+            background-color: pink;
+            width: 180px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+
+        header ul a:hover,
+        .item:hover {
+            box-shadow: 0px 0px 20px black;
+        }
+
+        .content .item span {
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+
+        img {
+            cursor: pointer;
+        }
+
+        .content .item:nth-child(1) {
+            background-color: #595CA8;
+        }
+
+        .content .item:nth-child(2) {
+            background-color: #FF9D2E
+        }
+
+        .content .item:nth-child(3) {
+            background-color: #015E91;
+        }
+
+        .content .item:nth-child(4) {
+            background-color: #1DC128;
+        }
+
+        .content .item:nth-child(5) {
+            background-color: #01A6DE;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <img src="./imags/logo.png" alt="">
+            <ul>
+                <li><a href="#">清单</a></li>
+                <li><a href="#">会员</a></li>
+                <li><a href="#">商家</a></li>
+                <li><a href="#">我的</a></li>
+            </ul>
+        </header>
+
+
+        <div class="content">
+            <div class="nav">
+                <div class="item">
+                    <div class="logo">
+                        <img src="./imags/item1.png" alt="">
+                    </div>
+                    <span>邮箱</span>
+                </div>
+                <div class="item">
+                    <div class="logo">
+                        <img src="./imags/item2.png" alt="">
+                    </div>
+                    <span>服务</span>
+                </div>
+                <div class="item">
+                    <div class="logo">
+                        <img src="./imags/item3.png" alt="">
+                    </div>
+                    <span>课堂</span>
+                </div>
+                <div class="item">
+                    <div class="logo">
+                        <img src="./imags/item4.png" alt="">
+                    </div>
+                    <span>微信</span>
+                </div>
+                <div class="item">
+                    <div class="logo">
+                        <img src="./imags/item5.png" alt="">
+                    </div>
+                    <span>客服</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

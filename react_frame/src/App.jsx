@@ -14,16 +14,19 @@ export default class App extends React.Component {
       { id: '003', title: '发呆', done: false }
     ]
   }
+  // #region header
   // 从Header中往App中添数据
   addTodos = (todo) => {
-    const { todos } = this.state
+    let { todos } = this.state
     todos.unshift(todo)
     this.setState({ todos })
   }
+  // #endregion header
 
-  // Item控制App中的数据
+  // #region items
+  //item勾选
   changeTodos = (id) => {
-    const { todos } = this.state
+    let { todos } = this.state
     todos.forEach(todo => {
       if (todo.id === id) todo.done = !todo.done
 
@@ -31,17 +34,43 @@ export default class App extends React.Component {
     })
   }
 
+  // 对数据删除
+  deleteTodos = (id) => {
+    let { todos } = this.state
+    todos = todos.filter(todo => todo.id !== id)
+    this.setState({ todos })
+  }
+  // #endregion items
+
+  // #region footer
+
+
+  // #endregion footer
+  // 全部勾选
+  changeAll = (done) => {
+    let { todos } = this.state
+    todos.forEach((todo) => {
+      todo.done = done
+    })
+    this.setState({ todos })
+  }
+
+  //渲染页面
   render() {
 
-    const { todos } = this.state
+    let { todos } = this.state
 
     return (
       <div>
         <div className="todo-container">
           <div className="todo-wrap">
             <Header addTodos={this.addTodos}></Header>
-            <List todos={todos} changeTodos={this.changeTodos}></List>
-            <Footer></Footer>
+
+            <List todos={todos}
+              changeTodos={this.changeTodos}
+              deleteTodos={this.deleteTodos}></List>
+
+            <Footer todos={todos} changeAll={this.changeAll} ></Footer>
           </div>
         </div>
       </div >

@@ -11,24 +11,41 @@ export default class Item extends React.Component {
             this.setState({ mouse: flag })
         }
     }
-    s
+
     handleChange = (id) => {
-        return () => {
+        return (e) => {
+            console.log(e.target.checked);
             this.props.changeTodos(id)
         }
     }
+
+    handleDelete = (id) => {
+        return () => {
+            console.log(id);
+            if (window.confirm('Are you sure you want to delete')) {  //在react中window上的属性要加window.
+                this.props.deleteTodos(id)
+            }
+        }
+    }
+
+
     render() {
         const { title, done, id, } = this.props
         const { mouse } = this.state
 
         return (
             <>
-                <li style={{ backgroundColor: mouse ? '#ddd' : 'white' }} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
+                <li style={{ backgroundColor: mouse ? '#ddd' : 'white' }}
+                    onMouseEnter={this.handleMouse(true)}
+                    onMouseLeave={this.handleMouse(false)}>
                     <label>
-                        <input type="checkbox" defaultChecked={done} onChange={this.handleChange(id)} />
+                        <input type="checkbox" checked={done}
+                            onChange={this.handleChange(id)} />
                         <span>{title}</span>
                     </label>
-                    <button className="btn btn-danger" style={{ display: mouse ? 'block' : 'none' }} >删除</button>
+                    <button className="btn btn-danger"
+                        style={{ display: mouse ? 'block' : 'none' }}
+                        onClick={this.handleDelete(id)} >删除</button>
                 </li>
 
             </>

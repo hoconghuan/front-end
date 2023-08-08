@@ -11,7 +11,7 @@ export default class Header extends React.Component {
             alert('Please input a value!!')
             return
         }
-        if (key == "Enter") {
+        if (key === "Enter") {
             const todo = { id: nanoid(), title: target.value, done: false }
             addTodos(todo)
             e.target.value = ''

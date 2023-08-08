@@ -1,21 +1,27 @@
+import React, { Component } from 'react'
+import "./index.css"
 
-import React from 'react';
-import Item from '../Items/index'
-import './index.css'
-
-export default class List extends React.Component {
+export default class List extends Component {
     render() {
-        const { todos, changeTodos, deleteTodos } = this.props
+        let { users, isFirst, isLoading, err } = this.props
         return (
-            <ul className="todo-main">
+            <div className="row">
                 {
-                    todos.map((todo) => {
-                        return <Item key={todo.id}  {...todo} changeTodos={changeTodos} deleteTodos={deleteTodos}></Item>
-                    })
+                    isFirst ? <h2>welcome to use this search</h2> :
+                        isLoading ? <h2>Loading</h2> :
+                            err ? <h2>{err}</h2> :
+                                users.map((user) => {
+                                    return (
+                                        <div key={user.id} className="card">
+                                            <a rel="noreferrer" href={user.html_url} target="_blank">
+                                                <img alt="avatoor" src={user.avatar_url} style={{ width: '100px' }} />
+                                            </a>
+                                            <p className="card-text">{user.login}</p>
+                                        </div>
+                                    )
+                                })
                 }
-            </ul>
-
+            </div>
         )
     }
 }
-

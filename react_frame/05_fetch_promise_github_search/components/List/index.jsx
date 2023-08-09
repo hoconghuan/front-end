@@ -21,7 +21,7 @@ export default class List extends Component {
             <div className="row">
                 {
                     isFirst ? <h2>welcome to use this search</h2> :
-                        isLoading ? <h2>Loading</h2> :
+                        isLoading ? <h2>Loading........</h2> :
                             err ? <h2>{err}</h2> :
                                 users.map((user) => {
                                     return (

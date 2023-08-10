@@ -1,5 +1,4 @@
-
-ref三种写法：字符串，回调，react的createRef方法的区别
+# ref三种写法：字符串，回调，react的createRef方法的区别
 
 字符串：  ref='xxx' , 想要拿到值 要调用 this.refs.xxx.value
 

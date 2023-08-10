@@ -18,7 +18,6 @@ export default class Home extends Component {
                             <NavLink className="list-group-item " to='/home/messages'>Messages</NavLink>
                         </li>
                     </ul>
-
                     <Switch>
                         <Route path='/home/news' component={News}></Route>
                         {/* route里面的是 path 路径  navlink的是 to去哪儿 */}

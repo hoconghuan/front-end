@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Home from './pages/Home';
 import About from './pages/About';
 import Header from './components/Header';
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Route, Switch, } from "react-router-dom";
 export default class App extends Component {
   render() {
     return (
@@ -23,6 +23,9 @@ export default class App extends Component {
               <a className="list-group-item" href="./home.html">Home</a> */}
 
               <NavLink className="list-group-item" to="/about">About</NavLink>
+
+              {/* NavLink 可以控制高亮显示，  或者可以说 控制路由切换时的CSS属性 */}
+
               <NavLink className="list-group-item" to="/home">Home</NavLink>
 
             </div>
@@ -30,8 +33,20 @@ export default class App extends Component {
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
-                <Route path="/about" component={About}></Route>
-                <Route path="/home" component={Home}></Route>
+                <Switch>
+
+                  {/* switch 是防止路由一直匹配 */}
+
+                  <Route path="/about" component={About}></Route>
+
+                  {/* 在route中加 exact 就是严格匹配， 严格匹配是在 navlink中表示路径必须一样才能显示组件，比如  /home/a/b , 在route中 路径为/home 就不能匹配。 取消就可以直接匹配上，这个属于模糊匹配  */}
+
+                  <Route path="/home" component={Home}></Route>
+
+                  <Redirect to='/home'></Redirect>
+                </Switch>
+
+
               </div>
             </div>
           </div>

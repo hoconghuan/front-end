@@ -13,8 +13,8 @@ export default class Detail extends Component {
         console.log(this.props);
         // let { id, title } = this.props.match.params //param 的方法
 
-        let { state } = this.props.location
-        let { id, title } = state
+
+        let { id, title } = this.props.match.params
 
         let detailResult = details.find((detail) => {
             return detail.id === id

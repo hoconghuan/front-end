@@ -10,6 +10,14 @@ export default class Messages extends Component {
             { id: '003', title: 'message003' },
         ]
     }
+
+    pushHandle = (id, title) => {
+        console.log(this);
+        this.props.history.push(`/home/messages/detail/${id}/${title}`)
+    }
+    replaceHandle = (id, title) => {
+        this.props.history.replace(`/home/messages/detail/${id}/${title}`)
+    }
     render() {
         let { lists } = this.state
         return (
@@ -19,9 +27,14 @@ export default class Messages extends Component {
                         lists.map((list) => {
                             return (
                                 <li key={list.id}>
-                                    <Link to=
-                                        {{ pathname: '/home/messages/detail/', state: { id: list.id, title: list.title } }}>{list.title}
+                                    <Link to={`/home/messages/detail/${list.id}/${list.title}`}>{list.title}
                                     </Link>
+                                    &nbsp;<button onClick={() => {
+                                        this.pushHandle(list.id, list.title)
+                                    }}>push</button>
+                                    &nbsp;<button onClick={() => {
+                                        this.replaceHandle(list.id, list.title)
+                                    }}>replace</button>
                                 </li>
 
                             )
@@ -30,7 +43,7 @@ export default class Messages extends Component {
 
                 </ul >
                 <hr />
-                <Route path='/home/messages/detail' component={Detail}></Route>
+                <Route path='/home/messages/detail/:id/:title' component={Detail}></Route>
             </div>
         )
     }

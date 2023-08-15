@@ -1,27 +1,30 @@
 import React, { Component } from 'react'
-export default class Count extends Component {
+import store from '../../redux/store';
+
+import { incrementActon, decrementActon, incrementAsyncActon } from '../../redux/count_action';
+
+export default class count extends Component {
 
     inrement = () => {
         let { value: number } = this.selectNumber
-        this.props.increment(number * 1)
+        store.dispatch(incrementActon(number * 1))
     }
     derement = () => {
         let { value: number } = this.selectNumber
-        this.props.decrement(number * 1)
+        store.dispatch(decrementActon(number * 1))
     }
     inrementOdd = () => {
         let { value: number } = this.selectNumber
-        if (this.props.count % 2) {
-            this.props.increment(number * 1)
+        let sum = store.getState()
+        if (sum % 2) {
+            store.dispatch(incrementActon(number * 1))
         }
     }
     inrementWait = () => {
         let { value: number } = this.selectNumber
 
-        setTimeout(() => {
-            this.props.increment(number * 1)
-        }, 500);
 
+        store.dispatch(incrementAsyncActon(number * 1))
 
     }
 
@@ -30,7 +33,7 @@ export default class Count extends Component {
         return (
             <div>
                 <div>
-                    <h1>当前求和为:{this.props.count}</h1>
+                    <h1>当前求和为:{store.getState()}</h1>
                 </div>
                 <select ref={(c) => { return this.selectNumber = c }}>
 

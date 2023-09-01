@@ -65,7 +65,7 @@ export default new VueRouter({
 
 
                             // props
-                            // props(param) {
+                            // props({param}) {
                             //     return {
                             //         id: param.id,
                             //         title: param.title

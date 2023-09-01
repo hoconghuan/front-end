@@ -17,7 +17,7 @@ export default {
 	props: ['todos', 'checkAllTodo', 'clearAllTodo'],
 	computed: {
 		//总数
-		total() {
+		total: () => {
 			return this.todos.length
 		},
 		//已完成数

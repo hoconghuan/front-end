@@ -1,8 +1,0 @@
-{
-    "explorer.compactFolders": false,
-    "workbench.settings.enableNaturalLanguageSearch": true,
-    "typescript.disableAutomaticTypeAcquisition": true,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-    }
-}

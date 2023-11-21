@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,20 +12,21 @@
         }
     </style>
 </head>
+
 <body>
-    <img src="../pic/angel.gif" alt="angel" >
+    <img src="../pic/angel.gif" alt="angel">
     <script>
         var pic = document.querySelector('img');
-       
-        document.addEventListener('mousemove',fn)
-        function fn(e)
-         {
+
+        document.addEventListener('mousemove', fn)
+        function fn(e) {
             var x = e.clientX;
             var y = e.clientY;
-            
+
             pic.style.left = x - 40 + 'px';
             pic.style.top = y - 40 + 'px';
         }
     </script>
 </body>
+
 </html>

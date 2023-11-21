@@ -61,7 +61,7 @@ function Board({ xIsNext, squares, onPlay }) {
       <div className='board-row'>
         <Square value={squares[3]} onSquareClick={() => { handleClick(3) }}></Square>
         <Square value={squares[4]} onSquareClick={() => { handleClick(4) }}></Square>
-        <Square value={squares[5]} onSquareClick={() => { handleClick(5) }}>s</Square>
+        <Square value={squares[5]} onSquareClick={() => { handleClick(5) }}></Square>
       </div>
       <div className='board-row'>
         <Square value={squares[6]} onSquareClick={() => { handleClick(6) }}></Square>
@@ -73,20 +73,20 @@ function Board({ xIsNext, squares, onPlay }) {
 
 }
 export default function Game() {
-  const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setcurrentMove] = useState(0)
-  const currentSquares = history[history.length - 1]
+  const xIsNext = currentMove % 2 === 0;
+  const currentSquares = history[currentMove]
 
   function handlePlay(nextSquares) {
-    setHistory([...history, nextSquares])
-    setXIsNext(!xIsNext)
-
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
+    setHistory(nextHistory)
+    setcurrentMove(nextHistory.length - 1)
   }
 
   function JunpTo(nextMove) {
     setcurrentMove(nextMove)
-    setXIsNext(nextMove % 2 === 0)
+
   }
   const moves = history.map((squares, move) => {
     let description
@@ -97,7 +97,7 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => { JunpTo(moves) }}>
+        <button onClick={() => { JunpTo(move) }}>
           {description}
         </button>
       </li>

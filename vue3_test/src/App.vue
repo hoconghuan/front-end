@@ -1,16 +1,23 @@
 <template>
-  <DemoTest>
-
-  </DemoTest>
+  <Layout></Layout>
 </template>
 
-<script>
-import DemoTest from './components/DemoTest.vue';
-export default {
-  name: 'App',
-  components: { DemoTest },
+<script setup>
+// import { ref, reactive } from "vue";
+import { Layout } from './Layout/Layout.vue'
 
-
-}
 </script>
 
+<style lang="scss">
+@include block(test) {
+  color: red;
+
+  @include element(el) {
+    color: skyblue
+  }
+
+  @include modifier(success) {
+    color: green;
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-    Header
+    <div> Content</div>
 </template>
 
 <script setup>

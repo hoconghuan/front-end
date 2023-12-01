@@ -1,0 +1,35 @@
+$namespace: 'ah' !default;
+$block-sel:'-' !default;
+$el-sel:'__' !default;
+$mod-sel:'--' !default;
+
+
+@mixin bfc{
+    height: 100%;
+    overflow: hidden;
+}
+@mixin block($block){
+    $B: #{$namespace + $block-sel +  $block};
+    @at-root { // @at-root 是跳出嵌套的规则。没有加，比如是在div中，它会打div标签，然后再跟命名规则。
+        .#{$B} {
+            @content;
+        }
+    }
+}
+
+@mixin element($element){
+   $selector:&;
+    @at-root {
+        #{$selector + $el-sel + $element} {
+            @content;
+        }
+    }
+}
+@mixin modifier($modifier){ 
+    $selector:&;
+    @at-root {
+        #{$selector + $mod-sel + $modifier} {
+            @content;
+        }
+    }
+}

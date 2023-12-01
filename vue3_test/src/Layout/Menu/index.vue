@@ -1,5 +1,5 @@
 <template>
-    Content
+    <div> Menu</div>
 </template>
 
 <script setup>

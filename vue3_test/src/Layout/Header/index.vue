@@ -1,5 +1,5 @@
 <template>
-    Menu
+    <div> Header</div>
 </template>
 
 <script setup>

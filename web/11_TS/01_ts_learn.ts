@@ -1,4 +1,2 @@
-let a: string = 'andy'
+let a: string = "andy";
 console.log(a);
-
-

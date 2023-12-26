@@ -7,3 +7,4 @@ const writeStream = fs.createWriteStream('./final-2.txt')
 readStream.on('data', chunk => {
     writeStream.write(chunk)
 })
+    writeStream.end()

@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    typings install dt~node --global --save
-//typings install dt~jquery --global --save
-//typings install express --ambient --save
-  }
-}

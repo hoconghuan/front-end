@@ -1,9 +1,8 @@
 import db from "./dbmodule.mjs";
-import mongoose from "mongoose";
-import bookSchema from "./Schema.mjs";
+
+import bookModel from "./bookModel.mjs";
 db(
   () => {
-    let bookModel = mongoose.model("Book", bookSchema);
     bookModel
       .create({
         name: "西游记",

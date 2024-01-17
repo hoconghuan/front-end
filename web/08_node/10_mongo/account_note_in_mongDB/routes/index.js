@@ -1,11 +1,16 @@
 var express = require("express");
 var router = express.Router();
-var fs = require("fs");
-let data = require(__dirname + "/../data/data.json");
+const accountModel = require("../modules/account.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { data });
+  accountModel
+    .find()
+    .then((data) => {
+      // console.log(data);
+      res.render("index", { data });
+    })
+    .catch((err) => console.log(err.message));
 });
 
 router.get("/add", function (req, res, next) {
@@ -13,15 +18,29 @@ router.get("/add", function (req, res, next) {
 });
 router.post("/add", (req, res) => {
   // console.log(req.body);
-  let newData = {
-    id: data.length + 1,
-    ...req.body,
-  };
-  data.push(newData);
-  fs.writeFile(__dirname + "/../data/data.json", JSON.stringify(data), (err) =>
-    console.log(err.message)
-  );
-  // res.send("提交成功");
-  res.redirect("/");
+
+  accountModel
+    .create(req.body)
+    .then(() => {
+      console.log("提交成功");
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 });
+
+router.get("/:id", (req, res) => {
+  // console.log(req.params.id);
+  accountModel
+    .findByIdAndDelete(req.params.id)
+    .then(() => {
+      console.log("删除成功");
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 module.exports = router;

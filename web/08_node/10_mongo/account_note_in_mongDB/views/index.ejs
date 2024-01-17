@@ -4,18 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>记账本</title>
+    <style>
+      ul div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
     <h2>记账本</h2>
     <div>
-      <% for( let da of data ) { %>
+      <% for( let da of data ) { %> <% if (!data.length) { %>
+      <h4>没有数据，请添加!</h4>
+      <% } %>
       <ul>
-        <li>
-          <%= da.eve %>- <%= da.time %>- <%= da.type %>- <%= da.num %>- <%=
-          da.area %>
-        </li>
+        <div>
+          <li>
+            <%= da.eve %>- <%= da.time %>- <%= da.choose %>- <%= da.num %>- <%=
+            da.area %>
+          </li>
+          <a href="/<%= da.id %>" class="del">X</a>
+        </div>
       </ul>
+
       <% } %>
     </div>
+
+    <script>
+      let dels = document.querySelectorAll(".del");
+      dels.forEach((del) => {
+        del.addEventListener("click", function () {
+          console.log("aaaaa", data);
+          del.parentNode.parentNode.remove();
+        });
+      });
+    </script>
   </body>
 </html>

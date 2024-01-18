@@ -6,5 +6,5 @@ let account = new mongoose.Schema({
   num: Number,
   area: String,
 });
-let accountModel = mongoose.model("Book", account);
+let accountModel = mongoose.model("account", account);
 module.exports = accountModel;

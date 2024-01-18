@@ -15,10 +15,9 @@
   </head>
   <body>
     <h2>记账本</h2>
+
     <div>
-      <% for( let da of data ) { %> <% if (!data.length) { %>
-      <h4>没有数据，请添加!</h4>
-      <% } %>
+      <% if (data && data.length> 0) { %> <% for( let da of data ) { %>
       <ul>
         <div>
           <li>
@@ -28,7 +27,8 @@
           <a href="/<%= da.id %>" class="del">X</a>
         </div>
       </ul>
-
+      <% } %> <% } else { %>
+      <h1>here is no information!</h1>
       <% } %>
     </div>
 

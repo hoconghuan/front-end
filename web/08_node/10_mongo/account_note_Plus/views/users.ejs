@@ -14,16 +14,14 @@
     </style>
   </head>
   <body>
-    <h2>记账本</h2>
+    <h2>users</h2>
 
     <div>
       <% if (data && data.length> 0) { %> <% for( let da of data ) { %>
       <ul>
         <div>
-          <li>
-            <%= da.eve %>- <%= da.time %>- <%= da.choose %>- <%= da.num %>- <%=
-            da.area %>
-          </li>
+          <li><%= da.username %></li>
+          <p>--------</p>
           <a href="/<%= da._id %>" class="del">X</a>
         </div>
       </ul>

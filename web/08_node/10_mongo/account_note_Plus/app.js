@@ -3,9 +3,12 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const session = require("express-session");
+const mongoStore = require("connect-mongo");
+const { hostname, port, name } = require("./port_config/config.js");
 
 var indexRouter = require("./routes/index");
-const authRouter = require("./routes/auth");
+const authRouter = require("./routes/index.js");
 
 var app = express();
 
@@ -18,9 +21,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    name: "sid",
+    secret: "ccc",
+    resave: true,
+    saveUninitialized: true,
+    store: mongoStore.create({
+      mongoUrl: `mongodb://${hostname}:${port}/${name}`,
+    }),
+    cookie: { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7 },
+  })
+);
 
-app.use("/", indexRouter);
-app.use("/user", authRouter);
+app.use("/", authRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
